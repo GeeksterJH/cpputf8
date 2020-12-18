@@ -75,7 +75,10 @@ namespace cpputf8 {
 		while (it != string.end()) {
 			++result;
 			it += width;
-			width = decode_first(&(*it)).second;
+
+			if (it != string.end()) {
+				width = decode_first(&(*it)).second;
+			}
 		}
 
 		return result;
