@@ -2,6 +2,9 @@
 
 #include <cstddef>
 
+#include "cpputf8/unicode_data.hpp"
+#include "cpputf8/codepoint_info.hpp"
+
 namespace cpputf8 {
 	static constexpr auto MAX_CHAR_1 = U'\u007F';
 	static constexpr auto MAX_CHAR_2 = U'\u07FF';
@@ -40,5 +43,10 @@ namespace cpputf8 {
 		} else {
 			return 0;
 		}
+	}
+
+	[[nodiscard]] static constexpr inline CodepointInfo
+	get_info(char32_t const character) noexcept {
+		return UNICODE_DATA[UNICODE_DATA_INDICES[character]];
 	}
 }
