@@ -64,4 +64,20 @@ namespace cpputf8 {
 
 		return {result, width};
 	}
+
+	[[nodiscard]] static constexpr inline std::size_t
+	length(std::string_view const string) noexcept {
+		std::size_t result = 0;
+
+		auto it = string.begin();
+		auto width = decode_first(string).second;
+
+		while (it != string.end()) {
+			++result;
+			it += width;
+			width = decode_first(&(*it)).second;
+		}
+
+		return result;
+	}
 }
