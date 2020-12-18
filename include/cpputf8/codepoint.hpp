@@ -1,9 +1,8 @@
 #pragma once
 
+#include <cstddef>
+
 namespace cpputf8 {
-	// ==============
-	// === Ranges ===
-	// ==============
 	static constexpr auto MAX_CHAR_1 = U'\u007F';
 	static constexpr auto MAX_CHAR_2 = U'\u07FF';
 	static constexpr auto MAX_CHAR_3 = U'\uFFFF';
@@ -11,6 +10,8 @@ namespace cpputf8 {
 
 	static constexpr char32_t SURROGATE_MIN = 0xD800;
 	static constexpr char32_t SURROGATE_MAX = 0xDFFF;
+
+	static constexpr auto REPLACEMENT_CHARACTER = U'\uFFFD';
 
 	[[nodiscard]] static constexpr inline auto
 	is_surrogate(char32_t const character) noexcept {
@@ -22,7 +23,7 @@ namespace cpputf8 {
 		return character <= MAX_CHAR_4 && !is_surrogate(character);
 	}
 
-	[[nodiscard]] static constexpr inline auto
+	[[nodiscard]] static constexpr inline std::size_t
 	get_encode_width(char32_t const character) noexcept {
 		if (!is_valid(character)) {
 			return 0;
