@@ -4,7 +4,10 @@ from conans import ConanFile, CMake
 class CppUtf8Conan(ConanFile):
     name = "cpputf8"
     version = "0.1.0"
+    url = "https://github.com/GeeksterJH/cpputf8"
+    description = "A C++17 library for working with UTF-8 encoded text"
 
+    no_copy_sources = True
     exports_sources = [
         "include/*",
         "CMakeLists.txt",
@@ -13,8 +16,6 @@ class CppUtf8Conan(ConanFile):
         "build/include/*",
         "scripts/*"
     ]
-
-    no_copy_sources = True
 
     def build(self):
         cmake = CMake(self)
