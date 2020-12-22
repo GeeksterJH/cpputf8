@@ -3,7 +3,7 @@ from conans import ConanFile, CMake
 
 class CppUtf8Conan(ConanFile):
     name = "cpputf8"
-    version = "0.1.0"
+    version = "0.1.1"
     url = "https://github.com/GeeksterJH/cpputf8"
     description = "A C++17 library for working with UTF-8 encoded text"
 

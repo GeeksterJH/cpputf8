@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstddef>
+#include <optional>
 
 #include "cpputf8/unicode_data.hpp"
 #include "cpputf8/codepoint_info.hpp"
@@ -45,8 +46,12 @@ namespace cpputf8 {
 		}
 	}
 
-	[[nodiscard]] static constexpr inline CodepointInfo
+	[[nodiscard]] static constexpr inline std::optional<CodepointInfo>
 	get_info(char32_t const character) noexcept {
+		if (!is_valid(character)) {
+			return {};
+		}
+
 		return UNICODE_DATA[UNICODE_DATA_INDICES[character]];
 	}
 }
