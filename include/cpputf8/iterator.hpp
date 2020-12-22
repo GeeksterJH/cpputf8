@@ -29,7 +29,7 @@ namespace cpputf8 {
 			}
 		}
 
-		constexpr inline Iterator operator++() noexcept {
+		constexpr inline auto operator++() noexcept {
 			if (string_iterator < string.end()) {
 				string_iterator += codepoint.second;
 				codepoint = decode_first(c_str());
@@ -38,15 +38,14 @@ namespace cpputf8 {
 			return *this;
 		}
 
-		constexpr inline Iterator operator++(int const) noexcept {
+		constexpr inline auto operator++(int const) noexcept {
 			auto const result = *this;
 			++(*this);
 
 			return result;
 		}
 
-		constexpr inline Iterator
-		operator+=(std::size_t const amount) noexcept {
+		constexpr inline auto operator+=(std::size_t const amount) noexcept {
 			for (std::size_t i = 0; i < amount; ++i) {
 				++(*this);
 			}
@@ -54,7 +53,7 @@ namespace cpputf8 {
 			return *this;
 		}
 
-		constexpr inline Iterator operator--() noexcept {
+		constexpr inline auto operator--() noexcept {
 			if (string_iterator > string.begin()) {
 				string_iterator -= codepoint.second;
 				codepoint = decode_first(c_str());
@@ -63,15 +62,14 @@ namespace cpputf8 {
 			return *this;
 		}
 
-		constexpr inline Iterator operator--(int const) noexcept {
+		constexpr inline auto operator--(int const) noexcept {
 			auto const result = *this;
 			--(*this);
 
 			return result;
 		}
 
-		constexpr inline Iterator
-		operator-=(std::size_t const amount) noexcept {
+		constexpr inline auto operator-=(std::size_t const amount) noexcept {
 			for (std::size_t i = 0; i < amount; ++i) {
 				--(*this);
 			}
@@ -98,17 +96,17 @@ namespace cpputf8 {
 		}
 	};
 
-	[[nodiscard]] static constexpr inline Iterator
+	[[nodiscard]] static constexpr inline auto
 	begin(std::string_view const string) noexcept {
 		return Iterator{string, string.begin()};
 	}
 
-	[[nodiscard]] static constexpr inline Iterator
+	[[nodiscard]] static constexpr inline auto
 	end(std::string_view const string) noexcept {
 		return Iterator{string, string.end()};
 	}
 
-	[[nodiscard]] static constexpr inline Iterator
+	[[nodiscard]] static constexpr inline auto
 	operator+(Iterator const &iterator, std::size_t const amount) noexcept {
 		auto result = iterator;
 		result += amount;
@@ -116,7 +114,7 @@ namespace cpputf8 {
 		return result;
 	}
 
-	[[nodiscard]] static constexpr inline Iterator
+	[[nodiscard]] static constexpr inline auto
 	operator-(Iterator const &iterator, std::size_t const amount) noexcept {
 		auto result = iterator;
 		result -= amount;
