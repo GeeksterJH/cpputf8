@@ -12,7 +12,6 @@ class CppUtf8Conan(ConanFile):
         "include/*",
         "CMakeLists.txt",
         "cmake/*",
-        "test/*",
         "build/include/*",
         "scripts/*"
     ]
