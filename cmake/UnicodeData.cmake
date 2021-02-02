@@ -6,7 +6,7 @@ function(download_unicode_data)
 
 		file(
 			DOWNLOAD
-			"https://www.unicode.org/Public/14.0.0/ucd/UnicodeData-14.0.0d3.txt"
+			"https://www.unicode.org/Public/UCD/latest/ucd/UnicodeData.txt"
 			"${UNICODE_DATA_PATH}")
 	endif()
 endfunction()
